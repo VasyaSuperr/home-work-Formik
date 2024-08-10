@@ -5,9 +5,14 @@ export const LOGIN_SCHEMA = yup.object({
   password: yup
     .string()
     .trim()
-    .min(8)
-    .max(32)
-    .matches(/(?=.*[A-Z])/, "Password must contain at least 1 A-Z")
-    .matches(/(?=.*[a-z])/, "Password must contain at least 1 a-z")
+    .min(8, "Password must be at least 8 characters")
+    .max(32, "Password must be at most 32 characters")
+    .matches(/(?=.*[A-Z])/, "Password must contain at least 1 uppercase letter")
+    .matches(/(?=.*[a-z])/, "Password must contain at least 1 lowercase letter")
+    .matches(/(?=.*[\d])/, "Password must contain at least 1 number")
+    .matches(
+      /(?=.*[!@#$%^&*])/,
+      "Password must contain at least 1 special character"
+    )
     .required(),
 });
