@@ -16,3 +16,9 @@ export const LOGIN_SCHEMA = yup.object({
     )
     .required(),
 });
+
+export const SIGNUP_SCHEMA = yup.object({
+  firstName: yup.string().trim().required(),
+  lastName: yup.string().trim().required(),
+  fathers: yup.string().trim().required(),
+});
